@@ -5,3 +5,12 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+Book.destroy_all
+
+rand(100).times do
+  Book.create do |book|
+    book.title = Faker::Company.catch_phrase
+    book.description = Faker::Lorem.paragraph(2)
+    book.author = Faker::Name.name
+  end
+end
