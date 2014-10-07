@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   namespace :api do
+    get :csrf, to: 'csrf#index'
     scope :v1 do
       resources :books
     end
