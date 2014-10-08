@@ -3,6 +3,10 @@ class Api::BooksController < ApplicationController
     render json: Book.all
   end
 
+  def show
+    render json: Book.find(params[:id])
+  end
+
   def update
     book = Book.find(params[:id])
 
