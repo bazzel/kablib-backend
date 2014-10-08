@@ -3,8 +3,8 @@ Rails.application.routes.draw do
     get :csrf, to: 'csrf#index'
     scope :v1 do
       resources :books
+      resources :users
     end
-    get 'books/index'
   end
 
   # The priority is based upon order of creation: first created -> highest priority.

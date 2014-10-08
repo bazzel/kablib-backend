@@ -5,7 +5,16 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+User.destroy_all
 Book.destroy_all
+
+rand(40).times do
+  User.create do |user|
+    user.first_name = Faker::Name.first_name
+    user.last_name = Faker::Name.last_name
+    user.email = Faker::Internet.email
+  end
+end
 
 rand(100).times do
   Book.create do |book|
