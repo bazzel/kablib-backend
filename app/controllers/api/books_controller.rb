@@ -1,6 +1,6 @@
 class Api::BooksController < ApplicationController
   def index
-    render json: Book.includes(:latest_borrow).all
+    render json: Book.includes(:latest_borrow, :tags).all
   end
 
   def show
@@ -19,6 +19,6 @@ class Api::BooksController < ApplicationController
 
   private
   def book_params
-    params.require(:book).permit(:title, :description, :author)
+    params.require(:book).permit(:title, :description, :author, :tag_list)
   end
 end
