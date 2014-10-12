@@ -10,7 +10,7 @@ class Book < ActiveRecord::Base
   end
 
   def tag_list=(names)
-    self.tags = names.split(",").map do |n|
+    self.tags = String(names).split(",").map do |n|
       Tag.find_or_initialize_by(name: n.strip.downcase)
     end
   end
