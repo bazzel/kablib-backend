@@ -28,6 +28,12 @@ class Api::BooksController < ApplicationController
     end
   end
 
+  def destroy
+    Book.find(params[:id]).destroy
+
+    head 204
+  end
+
   private
   def book_params
     params.require(:book).permit(:title, :description, :author, :tag_list)
