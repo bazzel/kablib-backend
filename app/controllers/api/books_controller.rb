@@ -1,6 +1,6 @@
 class Api::BooksController < ApplicationController
   def index
-    render json: Book.includes(:latest_borrow, :tags).all
+    render json: Book.includes(:latest_borrow, :tags, :reviews).all
   end
 
   def show

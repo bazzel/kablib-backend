@@ -35,9 +35,27 @@ User.create([
 ])
 
 rand(100).times do
-  Book.create do |book|
+  book = Book.create do |book|
     book.title = Faker::Company.catch_phrase
     book.description = Faker::Lorem.paragraph(2)
     book.author = Faker::Name.name
+
+
+    User.all.sample(rand(User.count)).each do |user|
+      book.reviews.build({
+        user: user,
+        description: Faker::Lorem.paragraph(2),
+        rating: rand(0..5)
+      })
+    end
+  end
+
+  if rand(0..1) == 1
+    Borrow.create({
+      book: book,
+      user: User.offset(rand(User.count)).first
+    })
   end
 end
+
+
