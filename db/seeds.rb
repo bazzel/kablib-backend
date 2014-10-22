@@ -34,7 +34,7 @@ User.create([
   { first_name: 'Yvon', last_name: 'Winkelmolen', email: 'yvon@kabisa.nl' }
 ])
 
-rand(100).times do
+rand(50..100).times do
   book = Book.create do |book|
     book.title = Faker::Company.catch_phrase
     book.description = Faker::Lorem.paragraph(2)
@@ -45,7 +45,7 @@ rand(100).times do
       book.reviews.build({
         user: user,
         description: Faker::Lorem.paragraph(2),
-        rating: rand(0..5)
+        like: (rand(0..1) == 1)
       })
     end
   end
